@@ -51,23 +51,26 @@ class BottomBar extends GetView<MainController> {
         }
       },
       child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              myBottomBar.iconData,
-              color: controller.currentTab.value != myBottomBar.pageKey ? Colors.grey : Colors.blue,
-              size: 24.0,
-            ),
-            Text(
-              myBottomBar.title,
-              style: TextStyle(
-                fontSize: AppDimens.defaultTextSize,
+        color: Colors.transparent,
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                myBottomBar.iconData,
                 color: controller.currentTab.value != myBottomBar.pageKey ? Colors.grey : Colors.blue,
+                size: 24.0,
               ),
-            )
-          ],
+              Text(
+                myBottomBar.title,
+                style: TextStyle(
+                  fontSize: AppDimens.defaultTextSize,
+                  color: controller.currentTab.value != myBottomBar.pageKey ? Colors.grey : Colors.blue,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

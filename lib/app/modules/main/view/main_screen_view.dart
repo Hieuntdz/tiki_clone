@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/modules/main/controllers/main_controller.dart';
 import 'package:tiki_clone/app/modules/main/view/bottom_bar.dart';
+import 'package:tiki_clone/app/modules/main/view/home_page.dart';
 
 class MainScreenView extends GetView<MainController> {
   @override
@@ -12,7 +13,7 @@ class MainScreenView extends GetView<MainController> {
           children: [
             Expanded(
               flex: 1,
-              child: Container(),
+              child: HomePage(),
             ),
             Container(
               height: 50,
