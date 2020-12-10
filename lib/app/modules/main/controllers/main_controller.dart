@@ -20,6 +20,6 @@ class MainController extends GetxController {
   var currentTab = RoutesPage.HOME.obs;
 
   void changeTab(String name) {
-    currentTab(name);
+    currentTab.value = name;
   }
 }
