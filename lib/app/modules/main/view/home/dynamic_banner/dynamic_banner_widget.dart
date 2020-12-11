@@ -15,7 +15,6 @@ class DynamicBannerWidget extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: 3000,
         child: ListView.separated(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
@@ -60,7 +59,7 @@ class DynamicBannerWidget extends GetView<HomeController> {
                 }
             }
           },
-          separatorBuilder: (context, indext) => Container(
+          separatorBuilder: (context, index) => Container(
             width: double.infinity,
             height: 7,
             color: Colors.grey.withOpacity(0.6),

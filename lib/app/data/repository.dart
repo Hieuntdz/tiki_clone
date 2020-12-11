@@ -1,5 +1,6 @@
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
+import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/data/network/network_provider.dart';
 
 import 'model/shock_price/shock_price_response.dart';
@@ -37,5 +38,9 @@ class Repository {
 
   Future<List<DynamicBannerData>> getListDynamicBanner(String platform) async {
     return _networkProvider.getListDynamicBanner(platform);
+  }
+
+  Future<List<PersonalizationHomeData>> getListPersonalizationHomeData(String platform) async {
+    return _networkProvider.getListPersonalHomeData(platform);
   }
 }

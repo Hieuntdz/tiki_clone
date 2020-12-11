@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
-import 'package:tiki_clone/app/modules/main/view/home/progress_price.dart';
+import 'package:tiki_clone/app/modules/main/view/home/progress_price_widget.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 import 'package:tiki_clone/app/utils/utils.dart';
 
-class ShockPrice extends GetView<HomeController> {
+class ShockPriceWidget extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -187,7 +187,7 @@ class ShockPrice extends GetView<HomeController> {
             height: 5,
           ),
           CustomPaint(
-            painter: ProgressPrice(
+            painter: ProgressPriceWidget(
                 percent: (priceData.progress.orderedPercent / 100), underColor: Colors.pinkAccent.withOpacity(0.8)),
             child: Container(
               width: 60,

@@ -28,7 +28,7 @@ class RoundImage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(borderRadius),
             color: Colors.transparent,
-            border: Border.all(color: borderColor, width: 1),
+            border: Border.all(color: borderColor, width: 0.5),
           ),
         ),
       ],

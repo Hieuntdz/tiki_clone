@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
@@ -19,59 +18,53 @@ class LayoutTodayHot2 extends StatelessWidget {
     BannerData bannerData4 = listBanner[3];
     BannerData bannerData5 = listBanner[4];
     return Container(
-        width: double.infinity,
-        height: 350,
-        color: Colors.white,
-        padding: EdgeInsets.all(AppDimens.appPaddingLeftRight),
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              child: Text(
-                title,
-                style:
-                    TextStyle(color: Colors.black, fontSize: AppDimens.defaultBigTextSize, fontWeight: FontWeight.bold),
-              ),
+      width: double.infinity,
+      height: 350,
+      color: Colors.white,
+      padding: EdgeInsets.all(AppDimens.appPaddingLeftRight),
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            child: Text(
+              title,
+              style:
+                  TextStyle(color: Colors.black, fontSize: AppDimens.defaultBigTextSize, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-              height: 10,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            flex: 1,
+            child: Row(
+              children: [
+                Expanded(
+                    flex: 1,
+                    child: RoundImage(
+                      bannerData1.mobileUrl,
+                      borderRadius: 8,
+                    )),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: itemTodayHot2(bannerData2, bannerData4),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: itemTodayHot2(bannerData3, bannerData5),
+                ),
+              ],
             ),
-            Expanded(
-              flex: 1,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: CachedNetworkImage(
-                            imageUrl: bannerData1.mobileUrl,
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: itemTodayHot2(bannerData2, bannerData4),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: itemTodayHot2(bannerData3, bannerData5),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 
   Widget itemTodayHot2(BannerData b1, BannerData b2) {

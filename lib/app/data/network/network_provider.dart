@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
+import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
 import 'package:tiki_clone/app/data/network/app_remote.dart';
 
@@ -122,6 +123,23 @@ class NetworkProvider {
     if (response.statusCode == 200 && response.data != null) {
       response.data.forEach((v) {
         listBanner.add(new DynamicBannerData.fromJson(v));
+      });
+    }
+    return listBanner;
+  }
+
+  Future<List<PersonalizationHomeData>> getListPersonalHomeData(String platform) async {
+    Map<String, dynamic> parameters = new Map();
+    parameters[AppRemoteParams.paramsPlatform] = platform;
+    // parameters[AppRemoteParams.paramsAppVersion] = appVersion;
+    // parameters[AppRemoteParams.paramsVersion] = version;
+    Response response = await _dio.get(AppRemote.pathPersonalHomeData, queryParameters: parameters);
+
+    List<PersonalizationHomeData> listBanner = new List();
+
+    if (response.statusCode == 200 && response.data != null && response.data['widgets'] != null) {
+      response.data['widgets'].forEach((v) {
+        listBanner.add(new PersonalizationHomeData.fromJson(v));
       });
     }
     return listBanner;

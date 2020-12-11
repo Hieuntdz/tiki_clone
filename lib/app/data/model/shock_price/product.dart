@@ -10,10 +10,11 @@ class Product {
   int listPrice;
   List<Badges> badges;
   int discount;
-  int ratingAverage;
+  double ratingAverage;
   int reviewCount;
   int orderCount;
   String thumbnailUrl;
+  List<String> thumbnailUrls;
   bool isVisible;
   bool isFresh;
   bool isFlower;
@@ -23,6 +24,14 @@ class Product {
   int masterId;
   int sellerProductId;
   String pricePrefix;
+
+  int defaultSpid;
+  String type;
+  int discountRate;
+  String inventoryStatus;
+  String urlKey;
+  String title;
+  String subTitle;
 
   Product(
       {this.id,
@@ -45,7 +54,15 @@ class Product {
       this.urlAttendantInputForm,
       this.masterId,
       this.sellerProductId,
-      this.pricePrefix});
+      this.pricePrefix,
+      this.defaultSpid,
+      this.type,
+      this.discountRate,
+      this.inventoryStatus,
+      this.urlKey,
+      this.thumbnailUrls,
+      this.title,
+      this.subTitle});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -61,7 +78,10 @@ class Product {
       });
     }
     discount = json['discount'];
-    ratingAverage = json['rating_average'];
+    if (json['rating_average'] != null) {
+      ratingAverage = json['rating_average'].toDouble();
+    }
+
     reviewCount = json['review_count'];
     orderCount = json['order_count'];
     thumbnailUrl = json['thumbnail_url'];
@@ -74,6 +94,22 @@ class Product {
     masterId = json['master_id'];
     sellerProductId = json['seller_product_id'];
     pricePrefix = json['price_prefix'];
+
+    defaultSpid = json['default_spid'];
+    type = json['type'];
+    discountRate = json['discount_rate'];
+    inventoryStatus = json['inventory_status'];
+    urlKey = json['url_key'];
+
+    if (json['thumbnail_urls'] != null) {
+      thumbnailUrls = new List<String>();
+      json['thumbnail_urls'].forEach((v) {
+        thumbnailUrls.add(v);
+      });
+    }
+
+    title = json['title'];
+    subTitle = json['subtitle'];
   }
 
   Map<String, dynamic> toJson() {
@@ -103,6 +139,20 @@ class Product {
     data['master_id'] = this.masterId;
     data['seller_product_id'] = this.sellerProductId;
     data['price_prefix'] = this.pricePrefix;
+
+    data['default_spid'] = this.defaultSpid;
+    data['type'] = this.type;
+    data['discount_rate'] = this.discountRate;
+    data['inventory_status'] = this.inventoryStatus;
+    data['url_key'] = this.urlKey;
+
+    if (thumbnailUrls != null) {
+      data['thumbnail_urls'] = this.thumbnailUrls.map((e) => e).toList();
+    }
+
+    data[title] = this.title;
+    data[subTitle] = this.subTitle;
+
     return data;
   }
 }

@@ -39,27 +39,11 @@ class LayoutTodayHot6 extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                flex: 1,
-                child: AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: RoundImage(
-                    bannerData1.imageUrl,
-                  ),
-                ),
-              ),
+              itemImage(bannerData1.imageUrl),
               SizedBox(
                 width: 5,
               ),
-              Expanded(
-                flex: 1,
-                child: AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: RoundImage(
-                    bannerData2.imageUrl,
-                  ),
-                ),
-              ),
+              itemImage(bannerData2.imageUrl),
             ],
           ),
           SizedBox(
@@ -69,42 +53,31 @@ class LayoutTodayHot6 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                flex: 1,
-                child: AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: RoundImage(
-                    bannerData3.imageUrl,
-                  ),
-                ),
-              ),
+              itemImage(bannerData3.imageUrl),
               SizedBox(
                 width: 5,
               ),
-              Expanded(
-                flex: 1,
-                child: AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: RoundImage(
-                    bannerData4.imageUrl,
-                  ),
-                ),
-              ),
+              itemImage(bannerData4.imageUrl),
               SizedBox(
                 width: 5,
               ),
-              Expanded(
-                flex: 1,
-                child: AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: RoundImage(
-                    bannerData5.imageUrl,
-                  ),
-                ),
-              ),
+              itemImage(bannerData5.imageUrl),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget itemImage(String url) {
+    return Expanded(
+      flex: 1,
+      child: AspectRatio(
+        aspectRatio: 1 / 1,
+        child: RoundImage(
+          url,
+          borderColor: Colors.grey,
+        ),
       ),
     );
   }

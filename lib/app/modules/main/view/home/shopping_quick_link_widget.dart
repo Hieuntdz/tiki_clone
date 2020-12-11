@@ -6,7 +6,7 @@ import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 
-class ShoppingQuickLink extends GetView<HomeController> {
+class ShoppingQuickLinkWidget extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(

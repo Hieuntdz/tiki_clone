@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
 import 'package:tiki_clone/app/modules/main/view/home/curved_background.dart';
-import 'package:tiki_clone/app/modules/main/view/home/shock_price.dart';
+import 'package:tiki_clone/app/modules/main/view/home/shock_price_widget.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 
-class TikiHeader extends GetView<HomeController> {
+class TikiHeaderWidget extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +55,7 @@ class TikiHeader extends GetView<HomeController> {
               SizedBox(
                 height: 10,
               ),
-              ShockPrice(),
+              ShockPriceWidget(),
               SizedBox(
                 height: 10,
               ),

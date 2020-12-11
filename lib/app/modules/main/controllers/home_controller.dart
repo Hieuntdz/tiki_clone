@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
+import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
 import 'package:tiki_clone/app/data/repository.dart';
+import 'package:tiki_clone/app/utils/const.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
@@ -35,6 +37,7 @@ class HomeController extends GetxController {
     _getListHomeBgBanner();
     _getListShoppingQuickLink();
     _getListDynamicBanner();
+    _getLisPersonalHomeData();
   }
 
   @override
@@ -49,18 +52,14 @@ class HomeController extends GetxController {
 
   /*Handle AppBar scroll*/
   appBarScrollListener() {
-    print("scrollListener offsets ${scrollController.offset}");
     // print("scrollListener position.maxScrollExtent  ${scrollController.position.maxScrollExtent}");
     // print("scrollListener position.minScrollExtent  ${scrollController.position.minScrollExtent}");
-
     double tmpOpacity = 1 - 0.02 * scrollController.offset;
     logoOpacity.value = tmpOpacity < 0 ? 0 : tmpOpacity;
 
     if (scrollController.offset >= 20) {
-      print("scrollListener change to 50 ");
       marginRightSearchBar.value = appBarResize;
     } else if (scrollController.offset <= 20) {
-      print("scrollListener change to 0 ");
       marginRightSearchBar.value = 0;
     }
   }
@@ -135,7 +134,7 @@ class HomeController extends GetxController {
     );
   }
 
-  /*Shock Price*/
+  ///Shock Price
   var shockPriceResponse = new ShockPriceResponse().obs;
   var listShockPriceData = new List().obs;
 
@@ -155,7 +154,7 @@ class HomeController extends GetxController {
     });
   }
 
-  /*Hot banner*/
+  ///Hot banner
   var listHotBanner = new List().obs;
 
   Future<void> _getListHotBanner() async {
@@ -165,7 +164,7 @@ class HomeController extends GetxController {
     print("_getListHotBanner List size ${listHotBanner.length}");
   }
 
-  /*Home Bg banner*/
+  /// Home Bg banner
   var listHomeBgBanner = new List().obs;
 
   Future<void> _getListHomeBgBanner() async {
@@ -175,8 +174,9 @@ class HomeController extends GetxController {
     print("_getListHomeBgBanner List size ${listHomeBgBanner.length}");
   }
 
-  /*Home Shopping Quick link */
+  /// Home Shopping Quick link
   var listShoppingQuickLink = new List().obs;
+
   Future<void> _getListShoppingQuickLink() async {
     listShoppingQuickLink.clear();
     List<BannerData> bannerData =
@@ -185,13 +185,40 @@ class HomeController extends GetxController {
     print("_getListShoppingQuickLink List size ${listShoppingQuickLink.length}");
   }
 
-  /*Dynamic Banner */
+  /// DynamicBanner
   var listDynamicBanner = new List().obs;
+
   Future<void> _getListDynamicBanner() async {
     listDynamicBanner.clear();
     List<DynamicBannerData> bannerData =
         await _repository.getListDynamicBanner(GetPlatform.isAndroid ? "android" : "ios");
     listDynamicBanner.addAll(bannerData);
     print("_getListDynamicBanner List size ${listShoppingQuickLink.length}");
+  }
+
+  /// personalization
+  var listPersonalHomeData = new List().obs;
+
+  Future<void> _getLisPersonalHomeData() async {
+    listPersonalHomeData.clear();
+    List<PersonalizationHomeData> listPersonalData =
+        await _repository.getListPersonalizationHomeData(GetPlatform.isAndroid ? "android" : "ios");
+    listPersonalHomeData.addAll(listPersonalData);
+    print("_getLisPersonalHomeData List size ${listPersonalHomeData.length}");
+
+    for (PersonalizationHomeData p in listPersonalHomeData) {
+      if (p.type == AppPersonalHomeType.infiniteScroll) {
+        listHomeTabData.clear();
+        listHomeTabData.addAll(p.tabs);
+      }
+    }
+  }
+
+  ///infinite_scroll ... tab at bottom
+  var listHomeTabData = new List().obs;
+  var currentHomeTabSelected = 0.obs;
+
+  void changeHomeTabSelected(int tab) {
+    currentHomeTabSelected.value = tab;
   }
 }

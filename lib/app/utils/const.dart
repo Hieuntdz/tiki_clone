@@ -18,3 +18,9 @@ class AppDynamicBannerConfig {
   static const String layoutRewards1 = "rewards_1";
   static const String layoutNewSeller2 = "new_seller_2";
 }
+
+class AppPersonalHomeType {
+  static const String featuredCategories = "featured_categories";
+  static const String featuredItems = "featured_items";
+  static const String infiniteScroll = "infinite_scroll";
+}

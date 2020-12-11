@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProgressPrice extends CustomPainter {
+class ProgressPriceWidget extends CustomPainter {
   double percent;
   Color underColor;
   Color aboveColor;
 
-  ProgressPrice({this.percent = 0, this.underColor = Colors.pinkAccent, this.aboveColor = Colors.red});
+  ProgressPriceWidget({this.percent = 0, this.underColor = Colors.pinkAccent, this.aboveColor = Colors.red});
 
   @override
   void paint(Canvas canvas, Size size) {

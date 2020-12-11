@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 
-class TikiAppbar extends GetView<HomeController> {
+class TikiAppbarWidget extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
