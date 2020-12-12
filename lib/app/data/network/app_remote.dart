@@ -7,7 +7,7 @@ class AppRemote {
   static const String pathHomeBgBanner = "v2/widgets/config/home/banners";
   static const String pathShoppingQuickLink = "shopping/v2/widgets/quick_link";
   static const String pathDynamicBanner = "v2/widgets/dynamic_banners";
-  static const String pathPersonalHomeData = "/personalization/v2/homepage";
+  static const String pathPersonalHomeData = "personalization/v2/homepage";
 }
 
 class AppRemoteParams {

@@ -75,6 +75,7 @@ class TikiAppbarWidget extends GetView<HomeController> {
                       alignment: Alignment.center,
                       height: 35,
                       child: TextFormField(
+                        readOnly: true,
                         style: TextStyle(fontSize: 14),
                         keyboardType: TextInputType.text,
                         decoration: new InputDecoration(
@@ -86,7 +87,7 @@ class TikiAppbarWidget extends GetView<HomeController> {
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
-                          hintText: 'Nhập tên sản phẩm ...',
+                          hintText: 'Bạn tìm gì hôm nay ?',
                           suffixIcon: Icon(Icons.search),
                         ),
                       ),

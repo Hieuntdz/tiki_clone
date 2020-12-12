@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
 import 'package:tiki_clone/app/modules/main/view/home/dynamic_banner/dynamic_banner_widget.dart';
+import 'package:tiki_clone/app/modules/main/view/home/personalization/content_tab_widget.dart';
 import 'package:tiki_clone/app/modules/main/view/home/personalization/feature_infinite_scroll.dart';
 import 'package:tiki_clone/app/modules/main/view/home/personalization/personalization_widget.dart';
 import 'package:tiki_clone/app/modules/main/view/home/shopping_quick_link_widget.dart';
@@ -45,6 +46,7 @@ class HomePage extends GetView<HomeController> {
                     height: 1,
                     color: Colors.grey,
                   ),
+                  Obx(() => ContentTabWidget(controller.listTabProduct.toList()))
                 ]),
               ),
             ],

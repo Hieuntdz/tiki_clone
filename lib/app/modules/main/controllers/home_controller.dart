@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
+import 'package:tiki_clone/app/data/model/home_tab_data.dart';
 import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
+import 'package:tiki_clone/app/data/model/shock_price/product.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
 import 'package:tiki_clone/app/data/repository.dart';
 import 'package:tiki_clone/app/utils/const.dart';
@@ -212,13 +214,19 @@ class HomeController extends GetxController {
         listHomeTabData.addAll(p.tabs);
       }
     }
+    changeHomeTabSelected(0);
   }
 
   ///infinite_scroll ... tab at bottom
   var listHomeTabData = new List().obs;
   var currentHomeTabSelected = 0.obs;
+  var listTabProduct = new List<Product>().obs;
 
   void changeHomeTabSelected(int tab) {
     currentHomeTabSelected.value = tab;
+
+    HomeTabData homeTabData = listHomeTabData[tab];
+    listTabProduct.clear();
+    listTabProduct.addAll(homeTabData.items);
   }
 }
