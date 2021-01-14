@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
-import 'package:tiki_clone/app/modules/main/view/home/personalization/feature_category_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/home/personalization/feature_search_widget.dart';
 import 'package:tiki_clone/app/utils/const.dart';
+
+import 'feature_category_widget.dart';
+import 'feature_search_widget.dart';
 
 class PersonalizationWidget extends GetView<HomeController> {
   @override

@@ -27,6 +27,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    print("HomeController init");
     scrollController.addListener(appBarScrollListener);
 
     _initData();
@@ -45,11 +46,13 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    print("HomeController onReady");
   }
 
   @override
   void onClose() {
     super.onClose();
+    print("HomeController onClose");
   }
 
   /*Handle AppBar scroll*/
@@ -105,16 +108,23 @@ class HomeController extends GetxController {
   static int delayNextBanner = 5;
   Timer _timer;
 
+  onBannerPageViewChange(int page) {
+    resetTimerBanner();
+    setCurrentPage(page);
+  }
+
   void timerBannerCallback(Timer timer) {
     nextBanner();
-    if (currentBannerIndex.value != 0) {
+    if (currentBannerIndex.value != 0 && bannerPageController.hasClients) {
       bannerPageController.animateToPage(
         currentBannerIndex.value,
         duration: _kDuration,
         curve: _kCurve,
       );
     } else {
-      bannerPageController.jumpToPage(currentBannerIndex.value);
+      if (bannerPageController.hasClients) {
+        bannerPageController.jumpToPage(currentBannerIndex.value);
+      }
     }
   }
 
@@ -127,6 +137,7 @@ class HomeController extends GetxController {
   }
 
   void onBannerSelected(int page) {
+    if (!bannerPageController.hasClients) return;
     resetTimerBanner();
     setCurrentPage(page);
     bannerPageController.animateToPage(

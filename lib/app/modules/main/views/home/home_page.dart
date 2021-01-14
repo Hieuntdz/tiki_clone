@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
-import 'package:tiki_clone/app/modules/main/view/home/dynamic_banner/dynamic_banner_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/home/personalization/content_tab_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/home/personalization/feature_infinite_scroll.dart';
-import 'package:tiki_clone/app/modules/main/view/home/personalization/personalization_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/home/shopping_quick_link_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/home/tiki_appbar_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/home/tiki_header_widget.dart';
+import 'package:tiki_clone/app/modules/main/views/home/dynamic_banner/dynamic_banner_widget.dart';
+
+import 'personalization/content_tab_widget.dart';
+import 'personalization/feature_infinite_scroll.dart';
+import 'personalization/personalization_widget.dart';
+import 'shopping_quick_link_widget.dart';
+import 'tiki_appbar_widget.dart';
+import 'tiki_header_widget.dart';
 
 class HomePage extends GetView<HomeController> {
   @override

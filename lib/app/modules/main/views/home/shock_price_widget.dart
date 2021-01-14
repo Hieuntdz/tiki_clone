@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
-import 'package:tiki_clone/app/modules/main/view/home/progress_price_widget.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 import 'package:tiki_clone/app/utils/utils.dart';
+
+import 'progress_price_widget.dart';
 
 class ShockPriceWidget extends GetView<HomeController> {
   @override

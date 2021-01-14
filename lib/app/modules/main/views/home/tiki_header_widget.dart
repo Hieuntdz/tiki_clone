@@ -5,9 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
-import 'package:tiki_clone/app/modules/main/view/home/curved_background.dart';
-import 'package:tiki_clone/app/modules/main/view/home/shock_price_widget.dart';
+import 'package:tiki_clone/app/modules/main/views/home/curved_background.dart';
 import 'package:tiki_clone/app/utils/const.dart';
+
+import 'shock_price_widget.dart';
 
 class TikiHeaderWidget extends GetView<HomeController> {
   @override
@@ -102,6 +103,7 @@ class TikiBanner extends GetView<HomeController> {
               scrollDirection: Axis.horizontal,
               controller: controller.bannerPageController,
               itemCount: controller.listHomeBanner.length,
+              onPageChanged: (int page) => controller.onBannerPageViewChange(page),
               itemBuilder: (context, index) {
                 BannerData homBanner = controller.listHomeBanner[index];
                 return itemBanner(homBanner);
@@ -141,7 +143,6 @@ class TikiBanner extends GetView<HomeController> {
   }
 
   Widget itemBanner(BannerData homeBanner) {
-    print("itemBanner url ${homeBanner.mobileUrl}");
     return GestureDetector(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.0),

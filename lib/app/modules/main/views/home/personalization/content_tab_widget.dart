@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/shock_price/product.dart';
-import 'package:tiki_clone/app/modules/main/view/image_utils_widget.dart';
-import 'package:tiki_clone/app/modules/main/view/star_rating.dart';
+import 'package:tiki_clone/app/modules/main/views/image_utils_widget.dart';
+import 'package:tiki_clone/app/modules/main/views/star_rating.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 import 'package:tiki_clone/app/utils/utils.dart';
 

@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
-import 'package:tiki_clone/app/modules/main/view/home/dynamic_banner/layout_new_seller2.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 
+import 'layout_new_seller2.dart';
 import 'layout_reward1.dart';
 import 'layout_today_hot2.dart';
 import 'layout_today_hot6.dart';
