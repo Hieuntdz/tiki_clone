@@ -1,3 +1,5 @@
+import 'package:tiki_clone/app/data/model/category_children.dart';
+
 class Category {
   int id;
   int parentId;
@@ -13,6 +15,7 @@ class Category {
   String metaDescription;
   Null metaKeywords;
   String thumbnailUrl;
+  List<CategoryChildren> children;
 
   Category(
       {this.id,
@@ -28,7 +31,7 @@ class Category {
       this.metaTitle,
       this.metaDescription,
       this.metaKeywords,
-      this.thumbnailUrl});
+      this.thumbnailUrl,this.children});
 
   Category.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -45,6 +48,13 @@ class Category {
     metaDescription = json['meta_description'];
     metaKeywords = json['meta_keywords'];
     thumbnailUrl = json['thumbnail_url'];
+
+    if (json["children"] != null) {
+      children = [];
+      json["children"].forEach((v) {
+        children.add(CategoryChildren.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -63,6 +73,10 @@ class Category {
     data['meta_description'] = this.metaDescription;
     data['meta_keywords'] = this.metaKeywords;
     data['thumbnail_url'] = this.thumbnailUrl;
+
+    if (children != null) {
+      data["children"] = children.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }

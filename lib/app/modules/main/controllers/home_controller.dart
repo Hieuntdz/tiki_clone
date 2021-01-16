@@ -10,6 +10,7 @@ import 'package:tiki_clone/app/data/model/shock_price/product.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
 import 'package:tiki_clone/app/data/repository.dart';
 import 'package:tiki_clone/app/utils/const.dart';
+import 'package:tiki_clone/app/utils/utils.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
@@ -75,7 +76,7 @@ class HomeController extends GetxController {
 
   Future<void> _getListBanner() async {
     listHomeBanner.clear();
-    List<BannerData> homBanner = await _repository.getListHomeBanner(GetPlatform.isAndroid ? "android" : "ios");
+    List<BannerData> homBanner = await _repository.getListHomeBanner(Utils.getPlatform);
     listHomeBanner.addAll(homBanner);
 
     print("getListBanner List size ${listHomeBanner.length}");
@@ -153,7 +154,7 @@ class HomeController extends GetxController {
 
   Future<void> _getListShockPrice(int page, int perPage) async {
     ShockPriceResponse priceResponse =
-        await _repository.getShockPriceResponse(GetPlatform.isAndroid ? "android" : "ios", page, perPage);
+        await _repository.getShockPriceResponse(Utils.getPlatform, page, perPage);
     if (priceResponse == null) {
       return;
     }
@@ -172,7 +173,7 @@ class HomeController extends GetxController {
 
   Future<void> _getListHotBanner() async {
     listHotBanner.clear();
-    List<BannerData> bannerData = await _repository.getListHotBanner(GetPlatform.isAndroid ? "android" : "ios");
+    List<BannerData> bannerData = await _repository.getListHotBanner(Utils.getPlatform);
     listHotBanner.addAll(bannerData);
     print("_getListHotBanner List size ${listHotBanner.length}");
   }
@@ -182,7 +183,7 @@ class HomeController extends GetxController {
 
   Future<void> _getListHomeBgBanner() async {
     listHomeBgBanner.clear();
-    List<BannerData> bannerData = await _repository.getListHomeBgBanner(GetPlatform.isAndroid ? "android" : "ios");
+    List<BannerData> bannerData = await _repository.getListHomeBgBanner(Utils.getPlatform);
     listHomeBgBanner.addAll(bannerData);
     print("_getListHomeBgBanner List size ${listHomeBgBanner.length}");
   }
@@ -193,7 +194,7 @@ class HomeController extends GetxController {
   Future<void> _getListShoppingQuickLink() async {
     listShoppingQuickLink.clear();
     List<BannerData> bannerData =
-        await _repository.getShoppingQuickLinkResponse(GetPlatform.isAndroid ? "android" : "ios");
+        await _repository.getShoppingQuickLinkResponse(Utils.getPlatform);
     listShoppingQuickLink.addAll(bannerData);
     print("_getListShoppingQuickLink List size ${listShoppingQuickLink.length}");
   }
@@ -204,7 +205,7 @@ class HomeController extends GetxController {
   Future<void> _getListDynamicBanner() async {
     listDynamicBanner.clear();
     List<DynamicBannerData> bannerData =
-        await _repository.getListDynamicBanner(GetPlatform.isAndroid ? "android" : "ios");
+        await _repository.getListDynamicBanner(Utils.getPlatform);
     listDynamicBanner.addAll(bannerData);
     print("_getListDynamicBanner List size ${listShoppingQuickLink.length}");
   }
@@ -215,7 +216,7 @@ class HomeController extends GetxController {
   Future<void> _getLisPersonalHomeData() async {
     listPersonalHomeData.clear();
     List<PersonalizationHomeData> listPersonalData =
-        await _repository.getListPersonalizationHomeData(GetPlatform.isAndroid ? "android" : "ios");
+        await _repository.getListPersonalizationHomeData(Utils.getPlatform);
     listPersonalHomeData.addAll(listPersonalData);
     print("_getLisPersonalHomeData List size ${listPersonalHomeData.length}");
 

@@ -6,6 +6,8 @@ import 'package:tiki_clone/app/modules/main/controllers/category_controller.dart
 import 'package:tiki_clone/app/modules/main/views/image_utils_widget.dart';
 import 'package:tiki_clone/app/utils/const.dart';
 
+import 'categoty_item_content.dart';
+
 class CategoryContentWidget extends StatelessWidget {
   CategoryController controller;
 
@@ -20,8 +22,12 @@ class CategoryContentWidget extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              color: Colors.white,
-            ),
+              color: Colors.grey.withOpacity(0.2),
+              padding: EdgeInsets.all(2),
+              width: double.infinity,
+              height: double.infinity,
+              child: CategoryItemContent(),
+            )
           ),
         ],
       ),
@@ -44,7 +50,7 @@ class CategoryContentWidget extends StatelessWidget {
                 fontSize: AppDimens.defaultTextSize);
             return InkWell(
               onTap: () {
-                controller.setCurrentCategory(category.id);
+                controller.setCurrentCategory(category);
               },
               child: Obx(
                 () => Container(

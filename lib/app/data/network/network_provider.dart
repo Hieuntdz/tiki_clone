@@ -8,6 +8,7 @@ import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
 import 'package:tiki_clone/app/data/network/app_remote.dart';
 import 'package:tiki_clone/app/data/network/dio_client.dart';
+import 'package:tiki_clone/app/utils/logger.dart';
 
 class NetworkProvider {
   static const String appVersion = "4.62.1";
@@ -185,12 +186,17 @@ class NetworkProvider {
     return listBanner;
   }
 
-  Future<List<Category>> getListCategory(String platform) async {
+  Future<List<Category>> getListCategory(String platform,{int parentId}) async {
+    Logger.info("begin");
     Map<String, dynamic> parameters = new Map();
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsParentId] = 2;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
+    if(parentId != null){
+      parameters[AppRemoteParams.paramsParentId] = parentId;
+      parameters[AppRemoteParams.paramsInclude] = Uri.decodeComponent("media%2Cchildren");
+    }
     Response response = await _dioClient.get(AppRemote.pathCategory, queryParameters: parameters);
 
     List<Category> listCategory = new List();
@@ -201,5 +207,24 @@ class NetworkProvider {
       });
     }
     return listCategory;
+  }
+
+  Future<List<BannerData>> getListCategoryBanner(String platform, int parentId) async {
+    Map<String, dynamic> parameters = new Map();
+    parameters[AppRemoteParams.paramsPlatform] = platform;
+    parameters[AppRemoteParams.paramsAppVersion] = appVersion;
+    parameters[AppRemoteParams.paramsVersion] = version;
+    parameters[AppRemoteParams.paramsGroup] = "category_main_$parentId";
+    Response response = await _dioClient.get(AppRemote.pathCategoryBanner, queryParameters: parameters);
+
+    List<BannerData> listBanner = new List();
+
+    if (response.statusCode == 200 && response.data != null && response.data['data'] != null) {
+      response.data['data'].forEach((v) {
+          listBanner.add(BannerData.fromJson(v));
+      });
+    }
+
+    return listBanner;
   }
 }

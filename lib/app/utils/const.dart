@@ -1,6 +1,6 @@
 class AppDimens {
-  static const double defaultTextSize = 12;
-  static const double defaultBigTextSize = 20;
+  static const double defaultTextSize = 14;
+  static const double defaultBigTextSize = 17;
   static const double defaultSmallTextSize = 10;
   static const double toolBarHeight = 50;
   static const double appPaddingLeftRight = 16;

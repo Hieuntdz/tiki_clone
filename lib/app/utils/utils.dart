@@ -1,3 +1,4 @@
+import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:intl/intl.dart';
 
 class Utils {
@@ -5,4 +6,6 @@ class Utils {
     final nf = new NumberFormat("#,##0", "en_US");
     return nf.format(value);
   }
+
+  static String getPlatform = GetPlatform.isAndroid ? "android" : "ios";
 }

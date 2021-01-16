@@ -45,7 +45,14 @@ class Repository {
     return _networkProvider.getListPersonalHomeData(platform);
   }
 
-  Future<List<Category>> getListCategory(String platform) async {
-    return _networkProvider.getListCategory(platform);
+  Future<List<Category>> getListCategory(String platform,{int parentID}) async {
+    if(parentID == null){
+      return _networkProvider.getListCategory(platform);
+    }
+    return _networkProvider.getListCategory(platform,parentId: parentID);
+  }
+
+  Future<List<BannerData>> getListCategoryBanner(String platform,int parentId) async {
+    return _networkProvider.getListCategoryBanner(platform,parentId);
   }
 }
