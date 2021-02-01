@@ -3,7 +3,7 @@ import 'inventory.dart';
 
 class Product {
   int id;
-  Null sku;
+  String sku;
   String name;
   String urlPath;
   int price;

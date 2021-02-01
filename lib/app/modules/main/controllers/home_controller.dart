@@ -10,6 +10,7 @@ import 'package:tiki_clone/app/data/model/shock_price/product.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
 import 'package:tiki_clone/app/data/repository.dart';
 import 'package:tiki_clone/app/utils/const.dart';
+import 'package:tiki_clone/app/utils/logger.dart';
 import 'package:tiki_clone/app/utils/utils.dart';
 
 class HomeController extends GetxController {
@@ -28,7 +29,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    print("HomeController init");
+    Logger.debug("HomeController init");
     scrollController.addListener(appBarScrollListener);
 
     _initData();

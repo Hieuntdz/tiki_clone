@@ -4,11 +4,12 @@ part of 'app_pages.dart';
 abstract class RoutesPage {
   static const HOME = '/home';
   static const CATEGORY = '/category';
-  static const SEARCH = '/search';
+  static const SOCIAL = '/social';
   static const NOTICE = '/notice';
   static const PROFILE = '/profile';
 }
 
 abstract class Routes {
   static const MAIN = "/main";
+  static const OTHER = "/other";
 }

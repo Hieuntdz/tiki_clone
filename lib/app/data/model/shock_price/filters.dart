@@ -1,12 +1,14 @@
+import 'package:tiki_clone/app/data/model/deal/time_data.dart';
+
 class Filters {
   Tags tags;
-  Tags times;
+  TimeData times;
 
   Filters({this.tags, this.times});
 
   Filters.fromJson(Map<String, dynamic> json) {
     tags = json['tags'] != null ? new Tags.fromJson(json['tags']) : null;
-    times = json['times'] != null ? new Tags.fromJson(json['times']) : null;
+    times = json['times'] != null ? new TimeData.fromJson(json['times']) : null;
   }
 
   Map<String, dynamic> toJson() {

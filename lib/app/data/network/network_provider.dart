@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/category.dart';
+import 'package:tiki_clone/app/data/model/deal/today_deal_response.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
 import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/data/model/shock_price/shock_price_response.dart';
@@ -66,11 +67,14 @@ class NetworkProvider {
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
-    Response response = await _dioClient.get(AppRemote.pathHomeBanner, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathHomeBanner,
+        queryParameters: parameters);
 
-    List<BannerData> listBanner = new List();
+    List<BannerData> listBanner = [];
 
-    if (response.statusCode == 200 && response.data != null && response.data['data'] != null) {
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data['data'] != null) {
       response.data['data'].forEach((v) {
         listBanner.add(new BannerData.fromJson(v));
       });
@@ -85,10 +89,13 @@ class NetworkProvider {
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
 
-    List<BannerData> listBanner = new List();
+    List<BannerData> listBanner = [];
     try {
-      Response response = await _dioClient.get(AppRemote.pathHotBanner, queryParameters: parameters);
-      if (response.statusCode == 200 && response.data != null && response.data['data'] != null) {
+      Response response = await _dioClient.get(AppRemote.pathHotBanner,
+          queryParameters: parameters);
+      if (response.statusCode == 200 &&
+          response.data != null &&
+          response.data['data'] != null) {
         response.data['data'].forEach((v) {
           listBanner.add(new BannerData.fromJson(v));
         });
@@ -105,11 +112,14 @@ class NetworkProvider {
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
-    Response response = await _dioClient.get(AppRemote.pathShoppingQuickLink, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathShoppingQuickLink,
+        queryParameters: parameters);
 
-    List<BannerData> listBanner = new List();
+    List<BannerData> listBanner = [];
 
-    if (response.statusCode == 200 && response.data != null && response.data['data'] != null) {
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data['data'] != null) {
       response.data['data'].forEach((v) {
         v.forEach((value) {
           listBanner.add(BannerData.fromJson(value));
@@ -125,9 +135,10 @@ class NetworkProvider {
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
-    Response response = await _dioClient.get(AppRemote.pathHomeBgBanner, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathHomeBgBanner,
+        queryParameters: parameters);
 
-    List<BannerData> listBanner = new List();
+    List<BannerData> listBanner = [];
 
     if (response.statusCode == 200 && response.data != null) {
       response.data.forEach((v) {
@@ -137,16 +148,19 @@ class NetworkProvider {
     return listBanner;
   }
 
-  Future<ShockPriceResponse> getShockPriceResponse(String platform, int page, int perPage) async {
+  Future<ShockPriceResponse> getShockPriceResponse(
+      String platform, int page, int perPage) async {
     Map<String, dynamic> parameters = new Map();
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsPage] = page;
     parameters[AppRemoteParams.paramsPerPage] = perPage;
 
-    Response response = await _dioClient.get(AppRemote.pathShockPrice, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathShockPrice,
+        queryParameters: parameters);
 
     if (response.statusCode == 200 && response.data != null) {
-      ShockPriceResponse priceResponse = ShockPriceResponse.fromJson(response.data);
+      ShockPriceResponse priceResponse =
+          ShockPriceResponse.fromJson(response.data);
       return priceResponse;
     }
     return null;
@@ -157,9 +171,10 @@ class NetworkProvider {
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
-    Response response = await _dioClient.get(AppRemote.pathDynamicBanner, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathDynamicBanner,
+        queryParameters: parameters);
 
-    List<DynamicBannerData> listBanner = new List();
+    List<DynamicBannerData> listBanner = [];
 
     if (response.statusCode == 200 && response.data != null) {
       response.data.forEach((v) {
@@ -169,16 +184,20 @@ class NetworkProvider {
     return listBanner;
   }
 
-  Future<List<PersonalizationHomeData>> getListPersonalHomeData(String platform) async {
+  Future<List<PersonalizationHomeData>> getListPersonalHomeData(
+      String platform) async {
     Map<String, dynamic> parameters = new Map();
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
-    Response response = await _dioClient.get(AppRemote.pathPersonalHomeData, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathPersonalHomeData,
+        queryParameters: parameters);
 
-    List<PersonalizationHomeData> listBanner = new List();
+    List<PersonalizationHomeData> listBanner = [];
 
-    if (response.statusCode == 200 && response.data != null && response.data['widgets'] != null) {
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data['widgets'] != null) {
       response.data['widgets'].forEach((v) {
         listBanner.add(new PersonalizationHomeData.fromJson(v));
       });
@@ -186,22 +205,27 @@ class NetworkProvider {
     return listBanner;
   }
 
-  Future<List<Category>> getListCategory(String platform,{int parentId}) async {
+  Future<List<Category>> getListCategory(String platform,
+      {int parentId}) async {
     Logger.info("begin");
     Map<String, dynamic> parameters = new Map();
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsParentId] = 2;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
-    if(parentId != null){
+    if (parentId != null) {
       parameters[AppRemoteParams.paramsParentId] = parentId;
-      parameters[AppRemoteParams.paramsInclude] = Uri.decodeComponent("media%2Cchildren");
+      parameters[AppRemoteParams.paramsInclude] =
+          Uri.decodeComponent("media%2Cchildren");
     }
-    Response response = await _dioClient.get(AppRemote.pathCategory, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathCategory,
+        queryParameters: parameters);
 
-    List<Category> listCategory = new List();
+    List<Category> listCategory = [];
 
-    if (response.statusCode == 200 && response.data != null && response.data['data'] != null) {
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data['data'] != null) {
       response.data['data'].forEach((v) {
         listCategory.add(new Category.fromJson(v));
       });
@@ -209,22 +233,48 @@ class NetworkProvider {
     return listCategory;
   }
 
-  Future<List<BannerData>> getListCategoryBanner(String platform, int parentId) async {
+  Future<List<BannerData>> getListCategoryBanner(
+      String platform, int parentId) async {
     Map<String, dynamic> parameters = new Map();
     parameters[AppRemoteParams.paramsPlatform] = platform;
     parameters[AppRemoteParams.paramsAppVersion] = appVersion;
     parameters[AppRemoteParams.paramsVersion] = version;
     parameters[AppRemoteParams.paramsGroup] = "category_main_$parentId";
-    Response response = await _dioClient.get(AppRemote.pathCategoryBanner, queryParameters: parameters);
+    Response response = await _dioClient.get(AppRemote.pathCategoryBanner,
+        queryParameters: parameters);
 
-    List<BannerData> listBanner = new List();
+    List<BannerData> listBanner = [];
 
-    if (response.statusCode == 200 && response.data != null && response.data['data'] != null) {
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data['data'] != null) {
       response.data['data'].forEach((v) {
-          listBanner.add(BannerData.fromJson(v));
+        listBanner.add(BannerData.fromJson(v));
       });
     }
 
     return listBanner;
+  }
+
+  Future<TodayDealResponse> getTodayDealResponse(String platform) async {
+    Logger.info("begin");
+    Map<String, dynamic> parameters = new Map();
+    parameters[AppRemoteParams.paramsPlatform] = platform;
+    parameters[AppRemoteParams.paramsAppVersion] = appVersion;
+    parameters[AppRemoteParams.paramsVersion] = version;
+
+    Response response = await _dioClient.get(AppRemote.pathDealMixToday,
+        queryParameters: parameters);
+
+    Logger.debug("getTodayDealResponse ${response.toString()}");
+
+    TodayDealResponse dealResponse;
+
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data["data"] != null) {
+      dealResponse = TodayDealResponse.fromJson(response.data);
+    }
+    return dealResponse;
   }
 }

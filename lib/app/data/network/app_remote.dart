@@ -10,6 +10,7 @@ class AppRemote {
   static const String pathPersonalHomeData = "personalization/v2/homepage";
   static const String pathCategory = "/v2/categories";
   static const String pathCategoryBanner = "/v2/banners";
+  static const String pathDealMixToday= "/v2/widget/deals/mix";
 }
 
 class AppRemoteParams {

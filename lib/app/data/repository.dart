@@ -1,5 +1,6 @@
 import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/data/model/category.dart';
+import 'package:tiki_clone/app/data/model/deal/today_deal_response.dart';
 import 'package:tiki_clone/app/data/model/dynamic_banner_data.dart';
 import 'package:tiki_clone/app/data/model/personalization_homepage_data.dart';
 import 'package:tiki_clone/app/data/network/network_provider.dart';
@@ -54,5 +55,9 @@ class Repository {
 
   Future<List<BannerData>> getListCategoryBanner(String platform,int parentId) async {
     return _networkProvider.getListCategoryBanner(platform,parentId);
+  }
+
+  Future<TodayDealResponse> getTodayDealResponse(String platform) async {
+    return _networkProvider.getTodayDealResponse(platform);
   }
 }

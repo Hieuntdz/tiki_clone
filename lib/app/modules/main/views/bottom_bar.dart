@@ -20,7 +20,7 @@ class BottomBar extends GetView<MainController> {
   final List<MyBottomBar> myBottomBarList = [
     MyBottomBar(RoutesPage.HOME, appLang.getHomeText.tr, Icons.home),
     MyBottomBar(RoutesPage.CATEGORY, appLang.getCategoryText.tr, Icons.category),
-    MyBottomBar(RoutesPage.SEARCH, appLang.getSearchText.tr, Icons.search),
+    MyBottomBar(RoutesPage.SOCIAL, appLang.getSearchText.tr, Icons.strikethrough_s_outlined),
     MyBottomBar(RoutesPage.NOTICE, appLang.getNoticeText.tr, Icons.notification_important),
     MyBottomBar(RoutesPage.PROFILE, appLang.getProfileText.tr, Icons.person),
   ];
