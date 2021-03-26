@@ -18,13 +18,15 @@ class TodaySockDealPage extends GetView<TodayDealController> {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            pinned: true,
-            titleSpacing: 0,
-            floating: true,
-            centerTitle: true,
-            title: headerView()),
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          pinned: true,
+          titleSpacing: 0,
+          floating: true,
+          centerTitle: true,
+          title: headerView(),
+        ),
         SliverList(
           delegate: SliverChildListDelegate(
             [
@@ -52,14 +54,17 @@ class TodaySockDealPage extends GetView<TodayDealController> {
 
   Widget headerView() {
     return Container(
+      width: double.infinity,
       alignment: Alignment.center,
       height: 55,
       padding: EdgeInsets.only(left: 16, right: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           InkWell(
+            onTap: (){
+              Get.back();
+            },
             child: Icon(
               Icons.arrow_back_ios,
               size: 20,
