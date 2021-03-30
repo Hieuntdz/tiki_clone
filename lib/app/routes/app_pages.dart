@@ -7,7 +7,7 @@ import 'package:tiki_clone/app/modules/main/views/other_screen.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.OTHER;
+  static const INITIAL = Routes.MAIN;
 
   static final routes = [
     GetPage(
@@ -22,3 +22,4 @@ class AppPages {
     ),
   ];
 }
+r
