@@ -10,6 +10,7 @@ class ShoppingQuickLinkWidget extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       alignment: Alignment.center,
       height: 150,
       padding: EdgeInsets.only(left: AppDimens.appPaddingLeftRight, right: AppDimens.appPaddingLeftRight),

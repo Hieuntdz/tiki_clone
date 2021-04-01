@@ -37,6 +37,7 @@ class DynamicBannerWidget extends GetView<HomeController> {
                     title: dynamicBanner.title,
                     listBanner: dynamicBanner.data,
                   );
+                  // return Container(color: Colors.yellow, width: double.infinity,height: 300,);
                 }
               case AppDynamicBannerConfig.layoutTodayHot6:
                 {
@@ -52,6 +53,7 @@ class DynamicBannerWidget extends GetView<HomeController> {
                     title: dynamicBanner.title,
                     listBannerData: dynamicBanner.data,
                   );
+                  // return Container(color: Colors.red, width: double.infinity,height: 300,);
                 }
               default:
                 {

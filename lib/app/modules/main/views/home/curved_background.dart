@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CurvedBackground extends CustomPainter {
   Color bgColor;
 
-  CurvedBackground({this.bgColor = Colors.blueAccent});
+  CurvedBackground({this.bgColor = Colors.transparent});
 
   @override
   void paint(Canvas canvas, Size size) {

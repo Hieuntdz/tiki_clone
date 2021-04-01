@@ -14,7 +14,7 @@ class TikiHeaderWidget extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 450,
+      height: 400,
       width: double.infinity,
       child: Stack(
         children: [
@@ -93,7 +93,9 @@ class TikiBanner extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: AppDimens.appPaddingLeftRight, right: AppDimens.appPaddingLeftRight),
+      padding: EdgeInsets.only(
+          left: AppDimens.appPaddingLeftRight,
+          right: AppDimens.appPaddingLeftRight),
       color: Colors.transparent,
       height: 130,
       child: Obx(
@@ -103,7 +105,8 @@ class TikiBanner extends GetView<HomeController> {
               scrollDirection: Axis.horizontal,
               controller: controller.bannerPageController,
               itemCount: controller.listHomeBanner.length,
-              onPageChanged: (int page) => controller.onBannerPageViewChange(page),
+              onPageChanged: (int page) =>
+                  controller.onBannerPageViewChange(page),
               itemBuilder: (context, index) {
                 BannerData homBanner = controller.listHomeBanner[index];
                 return itemBanner(homBanner);
@@ -129,7 +132,9 @@ class TikiBanner extends GetView<HomeController> {
                         height: 3,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5)),
-                            color: index == controller.currentBannerIndex.value ? Colors.white : Colors.grey),
+                            color: index == controller.currentBannerIndex.value
+                                ? Colors.white
+                                : Colors.grey),
                       ),
                     );
                   },

@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tiki_clone/app/data/model/banner_data.dart';
 import 'package:tiki_clone/app/modules/main/controllers/home_controller.dart';
 import 'package:tiki_clone/app/modules/main/views/home/dynamic_banner/dynamic_banner_widget.dart';
 
@@ -47,7 +49,8 @@ class HomePage extends GetView<HomeController> {
                     height: 1,
                     color: Colors.grey,
                   ),
-                  Obx(() => ContentTabWidget(controller.listTabProduct.toList()))
+                  Obx(() =>
+                      ContentTabWidget(controller.listTabProduct.toList()))
                 ]),
               ),
             ],
